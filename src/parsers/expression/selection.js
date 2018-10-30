@@ -21,6 +21,9 @@ function testPoint(datum, entry) {
       i = 0, dval, f;
 
   for (; i<n; ++i) {
+    if (values[i] === undefined) {
+        continue; // values[i] can be undefined on mouseovers, e.g., over a rect
+    }
     f = fields[i];
     f.getter = field.getter || field(f.field);
     dval = f.getter(datum);
